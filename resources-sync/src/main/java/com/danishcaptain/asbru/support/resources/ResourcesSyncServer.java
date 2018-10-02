@@ -1,47 +1,31 @@
-package com.danishcaptain.asbru.ssp.server;
+package com.danishcaptain.asbru.support.resources;
 
 import java.io.IOException;
 import java.net.InetSocketAddress;
 
 import com.danishcaptain.asbru.common.application.Application;
 import com.danishcaptain.asbru.common.application.HealthHandler;
-import com.danishcaptain.asbru.common.domain.DemandSidePlatform;
-import com.danishcaptain.asbru.ssp.server.handlers.BannerHandler;
-import com.danishcaptain.asbru.ssp.server.handlers.HeaderBiddingHandler;
-import com.danishcaptain.asbru.ssp.server.handlers.NativeHandler;
-import com.danishcaptain.asbru.ssp.server.handlers.SupplyBiddingHandler;
-import com.danishcaptain.asbru.ssp.server.handlers.VideoHandler;
-import com.danishcaptain.asbru.ssp.server.model.AuctionModel;
+import com.danishcaptain.asbru.support.resources.handlers.CookieSyncHandler;
+import com.danishcaptain.asbru.support.resources.model.ResourcesModel;
 import com.sun.net.httpserver.HttpServer;
 
-public class SspServer extends Application {
+public class ResourcesSyncServer extends Application {
 
 	private HttpServer server;
 
-
-	public SspServer () {
-		AuctionModel model = new AuctionModel();
+	public ResourcesSyncServer () {
+		ResourcesModel model = new ResourcesModel();
 	}
 	
 	@Override
 	protected void initApplication() {
-		// init from ssp-services
-		DemandSidePlatform dsp = new DemandSidePlatform();
-		
-		
-		SupplyBiddingHandler hbH = new HeaderBiddingHandler("HeaderBidding");
-		SupplyBiddingHandler bH = new BannerHandler("Banner");
-		SupplyBiddingHandler vH = new VideoHandler("Video");
-		SupplyBiddingHandler nH = new NativeHandler("Native");
-		HealthHandler health = new HealthHandler();
-
         try {
+    		CookieSyncHandler csH = new CookieSyncHandler("CookieSync");
+    		HealthHandler health = new HealthHandler();
+    		
 			server = HttpServer.create(new InetSocketAddress(8000), 0);
 			
-	        server.createContext(hbH.getContextName(), hbH);
-	        server.createContext(bH.getContextName(), hbH);
-	        server.createContext(vH.getContextName(), hbH);
-	        server.createContext(nH.getContextName(), hbH);
+	        server.createContext(csH.getContextName(), csH);
 	        server.createContext(health.getContextName(), health);
 	        
 	        server.setExecutor(null); // creates a default executor
@@ -56,9 +40,8 @@ public class SspServer extends Application {
         server.start();
 	}
 	
-	
 	public static void main(String[] args) {
-		SspServer server = new SspServer();
+		ResourcesSyncServer server = new ResourcesSyncServer();
 		server.init();
 		server.start();
 		server.join();

@@ -7,18 +7,24 @@ public abstract class Application {
 	}
 	
 	protected final void init() {
-		// TODO Auto-generated method stub
-		
+		initApplication();
 	}
+
+	protected abstract void initApplication();
 
 	protected final void start() {
-		// TODO Auto-generated method stub
-		
+		startApplication();
 	}
 
+	protected abstract void startApplication();
+
 	protected final void join() {
-		// TODO Auto-generated method stub
-		
+		try {
+			Thread.currentThread().join();
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 	/*

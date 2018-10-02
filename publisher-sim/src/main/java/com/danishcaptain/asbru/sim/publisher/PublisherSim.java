@@ -11,6 +11,14 @@ public class PublisherSim extends Application {
 		model = new PublisherModel();
 	}
 	
+	@Override
+	protected void initApplication() {
+	}
+
+	@Override
+	protected void startApplication() {
+	}
+
 	public static void main(String[] args) {
 		PublisherSim sim = new PublisherSim();
 		sim.init();

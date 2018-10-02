@@ -10,6 +10,7 @@
 	<modules>
 		<module>common</module>
 		<module>publisher-sim</module>
+        <module>resources-sync</module>
         <module>ssp-server</module>
 	</modules>
 
