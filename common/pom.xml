@@ -1,0 +1,17 @@
+<project>
+	<modelVersion>4.0.0</modelVersion>
+	<name>Maven Default Project - Common</name>
+	<packaging>jar</packaging>
+	<groupId>DK-Asbru</groupId>
+	<artifactId>common</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<parent>
+		<groupId>DK-Asbru</groupId>
+		<artifactId>Asbru</artifactId>
+		<version>0.0.1-SNAPSHOT</version>
+	</parent>
+	<properties>
+	</properties>
+	<dependencies>
+	</dependencies>
+</project>

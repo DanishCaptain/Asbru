@@ -1,0 +1,32 @@
+<project>
+	<modelVersion>4.0.0</modelVersion>
+	<name>Maven Default Project</name>
+	<packaging>pom</packaging>
+	<groupId>DK-Asbru</groupId>
+	<artifactId>Asbru</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<properties>
+	</properties>
+	<modules>
+		<module>common</module>
+		<module>publisher-sim</module>
+        <module>ssp-server</module>
+	</modules>
+
+	<dependencies>
+	</dependencies>
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>DK-Asbru</groupId>
+				<artifactId>common</artifactId>
+				<version>0.0.1-SNAPSHOT</version>
+			</dependency>
+            <dependency>
+                <groupId>DK-Asbru</groupId>
+                <artifactId>publisher-sim</artifactId>
+                <version>0.0.1-SNAPSHOT</version>
+            </dependency>
+		</dependencies>
+	</dependencyManagement>
+</project>
